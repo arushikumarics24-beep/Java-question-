@@ -1,0 +1,44 @@
+Enter number of patients: 2
+
+--- Enter details for Patient 1 ---
+ID: 101
+Name: Asha
+Age: 34
+BP: 120
+Temperature: 98.6
+Pulse Rate: 80
+Diagnosis: Fever
+Medicine: Paracetamol
+
+--- Enter details for Patient 2 ---
+ID: 102
+Name: Rohan
+Age: 45
+BP: 140
+Temperature: 99.1
+Pulse Rate: 85
+Diagnosis: BP High
+Medicine: Amlodipine
+
+
+========== PATIENT REPORTS ==========
+
+---- FULL MEDICAL REPORT ----
+Patient ID     : 101
+Name           : Asha
+Age            : 34
+BP             : 120
+Temperature    : 98.6
+Pulse Rate     : 80
+Diagnosis       : Fever
+Medicine        : Paracetamol
+
+---- FULL MEDICAL REPORT ----
+Patient ID     : 102
+Name           : Rohan
+Age            : 45
+BP             : 140
+Temperature    : 99.1
+Pulse Rate     : 85
+Diagnosis       : BP High
+Medicine        : Amlodipine

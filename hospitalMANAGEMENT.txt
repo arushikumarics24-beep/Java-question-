@@ -1,0 +1,123 @@
+package hospital;
+
+public class Patient {
+    protected int id;
+    protected String name;
+    protected int age;
+
+    public void setDetails(int id, String name, int age) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+    }
+
+    public void display() {
+        System.out.println("Patient ID     : " + id);
+        System.out.println("Name           : " + name);
+        System.out.println("Age            : " + age);
+    }
+}
+package hospital;
+
+public class Vitals {
+    private int bp;
+    private float temperature;
+    private int pulse;
+
+    public void setVitals(int bp, float temperature, int pulse) {
+        this.bp = bp;
+        this.temperature = temperature;
+        this.pulse = pulse;
+    }
+
+    public void displayVitals() {
+        System.out.println("BP             : " + bp);
+        System.out.println("Temperature    : " + temperature);
+        System.out.println("Pulse Rate     : " + pulse);
+    }
+}
+package report;
+
+import hospital.Patient;
+import hospital.Vitals;
+
+public class MedicalReport extends Patient {
+    private String diagnosis;
+    private String medicine;
+    private Vitals vit = new Vitals();
+
+    public void setMedicalDetails(String diagnosis, String medicine) {
+        this.diagnosis = diagnosis;
+        this.medicine = medicine;
+    }
+
+    public void setVitals(int bp, float temp, int pulse) {
+        vit.setVitals(bp, temp, pulse);
+    }
+
+    public void displayReport() {
+        System.out.println("\n---- FULL MEDICAL REPORT ----");
+        display();
+        vit.displayVitals();
+        System.out.println("Diagnosis       : " + diagnosis);
+        System.out.println("Medicine        : " + medicine);
+    }
+}
+import java.util.*;
+import report.MedicalReport;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter number of patients: ");
+        int n = sc.nextInt();
+        sc.nextLine();
+
+        MedicalReport[] mr = new MedicalReport[n];
+
+        for (int i = 0; i < n; i++) {
+            System.out.println("\n--- Enter details for Patient " + (i + 1) + " ---");
+
+            mr[i] = new MedicalReport();
+
+            System.out.print("ID: ");
+            int id = sc.nextInt();
+            sc.nextLine();
+
+            System.out.print("Name: ");
+            String name = sc.nextLine();
+
+            System.out.print("Age: ");
+            int age = sc.nextInt();
+
+            System.out.print("BP: ");
+            int bp = sc.nextInt();
+
+            System.out.print("Temperature: ");
+            float temp = sc.nextFloat();
+
+            System.out.print("Pulse Rate: ");
+            int pulse = sc.nextInt();
+            sc.nextLine();
+
+            System.out.print("Diagnosis: ");
+            String diag = sc.nextLine();
+
+            System.out.print("Medicine: ");
+            String med = sc.nextLine();
+
+            mr[i].setDetails(id, name, age);
+            mr[i].setVitals(bp, temp, pulse);
+            mr[i].setMedicalDetails(diag, med);
+        }
+
+        System.out.println("\n\n========== PATIENT REPORTS ==========");
+
+        for (int i = 0; i < n; i++) {
+            mr[i].displayReport();
+        }
+
+        sc.close();
+    }
+}

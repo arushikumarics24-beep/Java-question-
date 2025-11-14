@@ -1,0 +1,126 @@
+package Library;
+public class Book {
+    public String bookID;
+    public String title;
+    public String author;
+
+    public Book(String bookID, String title, String author) {
+        this.bookID = bookID;
+        this.title = title;
+        this.author = author;
+    }
+
+    public void displayBook() {
+        System.out.println("Book ID: " + bookID);
+        System.out.println("Title: " + title);
+        System.out.println("Author: " + author);
+    }
+}
+package Library;
+
+public class IssueDetails {
+    public String issueDate;
+    public String returnDate;
+    public double fine;
+
+    public IssueDetails(String issueDate, String returnDate, double fine) {
+        this.issueDate = issueDate;
+        this.returnDate = returnDate;
+        this.fine = fine;
+    }
+
+    public void displayIssueDetails() {
+        System.out.println("Issue Date: " + issueDate);
+        System.out.println("Return Date: " + returnDate);
+        System.out.println("Fine Amount: " + fine);
+    }
+}
+package StudentInfo;
+
+import Library.Book;
+import Library.IssueDetails;
+
+public class Student extends Book {
+    public String studentName;
+    public String usn;
+    public IssueDetails issued;
+    public double totalFine;
+
+    public Student(String bookID, String title, String author,
+                   String studentName, String usn, IssueDetails issued) {
+
+        super(bookID, title, author);
+        this.studentName = studentName;
+        this.usn = usn;
+        this.issued = issued;
+        this.totalFine = issued.fine;
+    }
+
+    public void displayStudentRecord() {
+        System.out.println("\n--- Student & Book Record ---");
+        System.out.println("Student Name: " + studentName);
+        System.out.println("USN: " + usn);
+
+        displayBook();
+        issued.displayIssueDetails();
+
+        System.out.println("Total Fine: " + totalFine);
+    }
+}
+import java.util.Scanner;
+import StudentInfo.Student;
+import Library.IssueDetails;
+
+public class MainLibrary {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter number of issued records (n): ");
+        int n = sc.nextInt();
+        sc.nextLine();
+
+        Student[] students = new Student[n];
+
+        for (int i = 0; i < n; i++) {
+            System.out.println("\nEnter details for record " + (i + 1) + ":");
+
+            System.out.print("Book ID: ");
+            String bookID = sc.nextLine();
+
+            System.out.print("Book Title: ");
+            String title = sc.nextLine();
+
+            System.out.print("Author: ");
+            String author = sc.nextLine();
+
+            System.out.print("Student Name: ");
+            String studentName = sc.nextLine();
+
+            System.out.print("Student USN: ");
+            String usn = sc.nextLine();
+
+            System.out.print("Issue Date: ");
+            String issueDate = sc.nextLine();
+
+            System.out.print("Return Date: ");
+            String returnDate = sc.nextLine();
+
+            System.out.print("Fine Amount: ");
+            double fine = sc.nextDouble();
+            sc.nextLine();
+
+            IssueDetails issueDetails = new IssueDetails(issueDate, returnDate, fine);
+
+            students[i] = new Student(bookID, title, author, studentName, usn, issueDetails);
+        }
+
+        System.out.println("\n======= COMPLETE LIBRARY RECORD =======");
+
+        for (Student s : students) {
+            s.displayStudentRecord();
+        }
+
+        sc.close();
+    }
+}

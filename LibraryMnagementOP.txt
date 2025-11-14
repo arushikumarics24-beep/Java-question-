@@ -1,0 +1,25 @@
+Output: 
+Enter number of issued records (n): 1
+
+Enter details for record 1:
+Book ID: B101
+Book Title: Operating Systems
+Author: Galvin
+Student Name: Ananya
+Student USN: 1RV23CS020
+Issue Date: 10-11-2024
+Return Date: 20-11-2024
+Fine Amount: 30
+
+======= COMPLETE LIBRARY RECORD =======
+
+--- Student & Book Record ---
+Student Name: Ananya
+USN: 1RV23CS020
+Book ID: B101
+Title: Operating Systems
+Author: Galvin
+Issue Date: 10-11-2024
+Return Date: 20-11-2024
+Fine Amount: 30.0
+Total Fine: 30.0
